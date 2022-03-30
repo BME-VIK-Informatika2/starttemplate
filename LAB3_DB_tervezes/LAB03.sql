@@ -22,6 +22,76 @@ select*
 from Termek
 where Keszlet > 200;
 
+-- 8.,
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Diak`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Diak` (
+  `idDiak` INT NOT NULL AUTO_INCREMENT,
+  `Torzsszam` INT NULL,
+  `Nev` VARCHAR(45) NULL,
+  `Cim` VARCHAR(45) NULL,
+  `Telszam` VARCHAR(45) NULL,
+  `Szuletes` DATE NULL,
+  PRIMARY KEY (`idDiak`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Targy`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Targy` (
+  `Diak_idDiak` INT NOT NULL,
+  `idTargy` INT NOT NULL,
+  `Kod` VARCHAR(45) NULL,
+  `Nev` VARCHAR(45) NULL,
+  `Leiras` VARCHAR(45) NULL,
+  PRIMARY KEY (`Diak_idDiak`, `idTargy`),
+  CONSTRAINT `fk_Targy_Diak`
+    FOREIGN KEY (`Diak_idDiak`)
+    REFERENCES `mydb`.`Diak` (`idDiak`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Oktato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Oktato` (
+  `idOktato` INT NOT NULL,
+  `Nev` VARCHAR(45) NULL,
+  `TanszKod` VARCHAR(45) NULL,
+  `Targy_Diak_idDiak` INT NOT NULL,
+  `Targy_idTargy` INT NOT NULL,
+  PRIMARY KEY (`idOktato`, `Targy_Diak_idDiak`, `Targy_idTargy`),
+  INDEX `fk_Oktato_Targy1_idx` (`Targy_Diak_idDiak` ASC, `Targy_idTargy` ASC) VISIBLE,
+  CONSTRAINT `fk_Oktato_Targy1`
+    FOREIGN KEY (`Targy_Diak_idDiak` , `Targy_idTargy`)
+    REFERENCES `mydb`.`Targy` (`Diak_idDiak` , `idTargy`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 -- 9.,
 insert into Targy("idTargy", "Kod", "Nev")
 values(1, "BMEVIAUAB01", "Informatika 2");
