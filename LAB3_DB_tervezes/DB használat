@@ -1,0 +1,45 @@
+insert into termek values (1,'Tegla',500,100);
+insert into vevo values (1, 'X Y');
+insert into telephely values (1, 'Fo telephely', '111 Budapest', 1);
+insert into megrendeles values (1,1,40, adddate(curdate(),30));
+
+update megrendeles set Mennyiseg=50 where Telephely_ID=1 and Termek_ID=1;
+
+select * from termek where Raktarkeszlet>200;
+
+
+
+
+insert into mydb.Hallgato (ID, Nev, Tel, Szuldatum) values ('ABC123','Lakatos Brendon', '06706666666','2000.11.11');
+insert into mydb.Hallgato (ID, Nev, Tel, Szuldatum) values ('BCD456','Kolompár Mercédesz','06401313333','2013.04.04');
+insert into mydb.Targy (ID, Nev) values ('T111222B','Álomvilág 16');
+insert into mydb.Targy (ID, Nev) values ('MAJOM666','Majmok bolhászkodásda 3');
+
+insert into mydb.Tanszek (ID, Nev) values ('AUT','Automatizálási és ... Tanszék');
+insert into mydb.Oktato (ID, Nev, Tanszek_ID) values (1, 'XY', 'AUT');
+insert into mydb.Oktato (ID, Nev, Tanszek_ID) values (2, 'PL', 'AUT');
+insert into mydb.Oktato (ID, Nev, Tanszek_ID) values (3, 'Vilmoska', 'AUT');
+
+insert into mydb.Hallgato_has_Targy (Hallgato_ID, Targy_ID) values ('ABC123','VIAUAB01');
+insert into mydb.Hallgato_has_Targy (Hallgato_ID, Targy_ID) values ('ABC123','T111222B');
+insert into mydb.Hallgato_has_Targy (Hallgato_ID, Targy_ID) values ('BCD456','T111222B');
+
+insert into mydb.Oktato_has_Targy (Oktato_ID, Targy_ID) values (1,'VIAUAB01');
+insert into mydb.Oktato_has_Targy (Oktato_ID, Targy_ID) values (2,'VIAUAB01');
+insert into mydb.Oktato_has_Targy (Oktato_ID, Targy_ID) values (2,'T111222B');
+
+update mydb.Targy set Leiras='almafa' where ID='T111222B';
+
+select * from mydb.Hallgato;
+select * from mydb.Targy;
+select * from mydb.Tanszek;
+select * from mydb.Oktato;
+select * from mydb.Hallgato_has_Targy;
+select * from mydb.Oktato_has_Targy;
+
+insert into mydb.Targy (ID, Nev) values ('VIAUAB01','Informatika 2'); -- 9.feladat
+update mydb.Targy set Nev='Info 2' where ID='VIAUAB01'; -- 10.feladat
+select * from mydb.Oktato; -- 11.feladat
+select * from mydb.Oktato where Left(Nev,1)='V'; -- 12.feladat
+delete from mydb.Hallgato_has_Targy where Hallgato_ID='ABC123' and Targy_ID='VIAUAB01'; -- 13.feladat
+select * from mydb.Targy where Leiras is null; -- 14.feladat
