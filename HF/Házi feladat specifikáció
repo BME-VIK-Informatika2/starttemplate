@@ -1,0 +1,16 @@
+	A feladat egy telefonokat forgalmazó cég szervízének egy adatbázisa. Az adatbázis belső felhasználásra van készítve, tehát csak a cég
+alkalmazottai érik el, a vásárlók és egyéb külső személyek nem. Minden eladáskor adatok kerülnek be a rendszerbe, amik megmutatják, hogy adott telefont mikor
+adtak el, meddig tart a garanciája, és a készülék saját azonosító adatait is tartalmazza. Az utóbbiakat, az egyszerűség kedvéért csak az IMEI szám és a
+model név fogja jelképezni.
+	A szervízben dolgozók értelelm szerűen nem tudják változtatni az eladott készülékek adatait, viszont vezetniük kell, hogy melyik telefonokat kellett
+javítaniuk. Ehez szükség van egy külső kulcsra, ami a javított telefonra mutat, ezen kívűl szükség van arra, hogy tudjuk, hogy mikor érkezett be a készülék
+a szervízbe, mikor lett vissza szolgáltatva a tulajdonosnak, illetve, hogy garanciális javítás történt-e. A dolgozóknak meg kell adni, hogy milyen beavatkozást
+végeztek a telefonon (pl. akkumulátor csere, töltő csatlakozó csere, stb.). Az elvégzett beavatkozás, illetve a visszaadás dátuma nem lehet kötelező információ,
+mert ezekről még nem tudunk semmit amikor megérkezik a telefon és azt bevételezik, bevezetik a rendszerbe, viszont a visszaadáshoz már szükséges lesz ezek ismerete.
+	A weblapon a menüből gyorsan el lehet érni a telefonok táblázatát, habár ezt a szervíz alkalmazottai nem szerkeszthetik, de néha szükséges lehet megnézni,
+hogy fontos információkat találjanak adott készülékekről. A menüből még elérhető kell legyen egy főoldal, illetve egy általános javítási útmutató. A
+legfontosabb menűpont a javítási táblázat lesz, mert itt kell az alkalmazotaknak megnyitniuk a bevételezett készülékek munkalapját, ahol új javításokat tudnak
+létrehozni illetve meglévőket szerkeszteni és lezárni. Itt lehet majd a javítás elvégzése után legördülő menüből kiválasztani, hogy mit csináltunk a készülékkel.
+Ezt a táblázatot többféle képpen lehet rendezni, pl. hogy a garanciális-, vagy a még nem befejezett javításokat vegye előre.
+	A feladat elvégzését MySQL relációs adatbázis segítségével valósítom meg (az adatbázis diagramja mellékelve megtalálható). A weboldalt HTML nyelven írom, és
+CSS-ben készítem hozzá a kinézetet. Az adatbázist és a weboldalt PHP nyelven kötöm össze, és ennek segítségével valósítom meg a weblap háttér kódját.
